@@ -33,5 +33,29 @@ V2.6.11源码目录结构
 - 过滤器
 - 内置组件
 
-## 数据监听
+## 深入VUE响应式原理
+
+vue源码中的数据监听部分首先需要深入vue的响应式原理；
+
+核心原理是vue将遍历data对象所有的property，并使用`Object.defineProperty`，把这些property全部转为getter/setter；
+
+这些getter/setter能够让vue追踪依赖，在property被访问和修改时通知变更。
+
+每个组件实例都对应一个wattcher实例，他会对组件渲染的过程中把‘接触’过的数据property记录为依赖，之后依赖项的setter触发时，会通知watcher，从而使它关联的组件重新渲染。
+
+![data](https://v2.cn.vuejs.org/images/data.png)
+
+
+
+### 源码中数据监听的实现
+
+```bash
+observer 文件部分。
+-	array.js
+-	dep.js
+-	index.js
+-	scheduler.js
+-	traverse.js
+-	watcher.js
+```
 
