@@ -229,3 +229,13 @@ var obj = Object.defineProperty({}, 'p', {});
 
 ## 总结：TODO
 
+
+
+## 参考：
+
+[属性描述对象](https://wangdoc.com/javascript/stdlib/attributes)
+
+[包装对象](https://wangdoc.com/javascript/stdlib/wrapper)
+
+[JavaScript 数据类型和数据结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures)
+
