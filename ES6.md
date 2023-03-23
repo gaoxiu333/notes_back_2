@@ -7,7 +7,7 @@
 - import
 - class
 
-###  顶层变量
+###  顶层变量	
 
 挂载在window下的变量，`var`、`functiion`声明的变量挂在在window下，`let`、`const`、`class`	声明的全局变量没有挂载在window下，也就是ES6开始全局变量将会和顶层变量脱钩。
 
