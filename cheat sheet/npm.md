@@ -2,14 +2,14 @@
 
 npm 备忘单
 
-### 版本
+### 查看版本
 
 ```bash
 npm -v
 npm --version
 ```
 
-### 帮助
+### 获取帮助
 
 ```bash
 npm
@@ -27,11 +27,11 @@ npm init --yes
 ### 安装包
 
 ```bash
-npm i -g package-name					#全局安装
-npm i --save package-name			#生产依赖
-npm i --save-dev package-name	#开发依赖
-npm i													#安装生产和开发依赖(production&development)
-npm i --production						#仅安装生产依赖
+npm i -g package-name         #全局安装
+npm i --save package-name     #生产依赖
+npm i --save-dev package-name #开发依赖
+npm i                         #安装生产和开发依赖(production&development)
+npm i --production            #仅安装生产依赖
 
 ```
 
@@ -59,9 +59,9 @@ npm uninstall --save-dev package-name
 
 ```bash
 # 设置
-npm config set init-author-name 'Your Name' # 设置 package.json 中作者的名字
-npm config set init-author-email 'Your Email' # 设置 package.json 中作者的名字
-npm config set init-license 'MIT'	# 设置 package.json 中许可，默认 ISC 
+npm config set init-author-name   'Your Name' # 设置 package.json 中作者的名字
+npm config set init-author-email  'Your Email' # 设置 package.json 中作者的名字
+npm config set init-license       'MIT'	# 设置 package.json 中许可，默认 ISC 
 ... 其他查看 npm config
 # 查看
 npm config get init-author-name
