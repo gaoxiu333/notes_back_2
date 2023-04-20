@@ -4,28 +4,31 @@
 
 ### 常用操作 
 
-| 命令         | 功能描述                     | 举例/备注          |
-| ------------ | ---------------------------- | ------------------ |
-| sudo         | 获取root权限                 | sudo -s            |
-| Car + D/exit | 退出root权限                 |                    |
-| clear        | 清楚屏幕或者窗口内容         |                    |
-| ping         | 给网络主机发送回应请求       | ping www.baidu.com |
-| man          | 查看命令说明                 | man ls             |
-| which        | 查看指定程序的路径           | which python       |
-| history      | 列出最近执行过的命令及编号   |                    |
-| hostname     | 电脑在网络中的名称           |                    |
-| env          | 显示当前所有设置过的环境变量 |                    |
-| passwd       | 修改用户密码                 |                    |
-| date         | 显示系统时间                 |                    |
-| cal          | 显示日历                     |                    |
-| time         | 统计程序的执行时间           |                    |
+| 命令                               | 功能描述                     | 举例/备注          |
+| ---------------------------------- | ---------------------------- | ------------------ |
+| sudo                               | 获取root权限                 | sudo -s            |
+| Car + D/exit                       | 退出root权限                 |                    |
+| clear                              | 清楚屏幕或者窗口内容         |                    |
+| ping                               | 给网络主机发送回应请求       | ping www.baidu.com |
+| man                                | 查看命令说明                 | man ls             |
+| which                              | 查看指定程序的路径           | which python       |
+| history                            | 列出最近执行过的命令及编号   |                    |
+| hostname                           | 电脑在网络中的名称           |                    |
+| env                                | 显示当前所有设置过的环境变量 |                    |
+| passwd                             | 修改用户密码                 |                    |
+| date                               | 显示系统时间                 |                    |
+| cal                                | 显示日历                     |                    |
+| sudo periodic daily                | 每日清理系统                 |                    |
+| sudo periodic weekly               | 每周清理系统                 |                    |
+| sudo periodic monthly              | 每月清理系统                 |                    |
+| sudo periodic daily weekly monthly | 以上三个都执行               |                    |
 
 
 
 ### 快捷键
 
 - `Command + Shift + .`：显示隐藏文件
-- `⌘ + Shift + Control + 4`：系统截图
+- `⌘ + Shift + Control + 4`：截图
 
 获取最高权限：`sudo -s`
 
