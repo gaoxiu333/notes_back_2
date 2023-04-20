@@ -19,8 +19,8 @@ npm help
 ### npm配置
 
 ```bash
-npm config set <key>=<value>	# 设置配置
-npm config get <key>					# 查看配置
+npm config set <key>=<value>  # 设置某个配置
+npm config get <key>          # 查看某个配置
 npm config list               # 查看配置列表
 npm config ls -l              # 查看npm所有默认配置
 npm config delete <key>       # 删除配置
