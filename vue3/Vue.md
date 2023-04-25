@@ -1,10 +1,14 @@
 # Vue 组合式API
 
-## 单文件组件
+## 单文件组件SFC
 
-每个`*.vue`文件都由三种顶层语言模块构成`<template>`，`<script>`，`<style>`
+Vue 的单文件组件 (即 `*.vue` 文件，英文 Single-File Component，简称 **SFC**)，使我们能够将一个 Vue 组件的模板、逻辑与样式封装在单个文件中；
+
+每一个 `*.vue` 文件都由三种顶层语言块构成：`<template>`、`<script>` 和 `<style>`
 
 ### `<template>`:
+
+- 每个 `*.vue` 文件最多可以包含一个顶层 `<template>` 块。
 
 - `Fragment`: 碎片化节点， `template` 中只允许有多个根节点（Vue2只允许一个根节点）。
 
@@ -43,14 +47,40 @@
 
 ### `<script>`:
 
-- `<script setup>`：为什么要用`<script setup>`?
-  - 更少的样板内容，更简洁的代码。
-  - 能够使用纯 TypeScript 声明 props 和自定义事件。
-  - 更好的运行时性能 (其模板会被编译成同一作用域内的渲染函数，避免了渲染上下文代理对象)。
-  - 更好的 IDE 类型推导性能 (减少了语言服务器从代码中抽取类型的工作)。
-- 
+- 只能有一个`<script setup> `和`<script>`块
+
+- `<script>` 和`<script setup> `可以组合使用
+
+- 普通的 `<script>` 在有这些需要的情况下或许会被使用到：
+
+  - 声明无法在 `<script setup>` 中声明的选项，例如 `inheritAttrs` 或插件的自定义选项。
+  - 声明模块的具名导出 (named exports)。
+  - 运行只需要在模块作用域执行一次的副作用，或是创建单例对象。
+  
+  ```vue
+  <script>
+  // 普通 <script>, 在模块作用域下执行 (仅一次,可以理解为只有在组件注册时执行？)
+  runSideEffectOnce()
+  
+  // 声明额外的选项
+  export default {
+    inheritAttrs: false,
+    customOptions: {}
+  }
+  </script>
+  
+  <script setup>
+  // 在 setup() 作用域中执行 (对每个实例皆如此)
+  </script>
+  
+  ```
+  
+  
+  
 
 ### `<style>`:
+
+- 每个 `*.vue` 文件可以包含多个 `<style>` 标签。
 
 - `scoped`: 使用 `scoped` 后，父组件的样式将不会渗透到子组件中；
 - 有三个伪类以应对不同的场景：
@@ -163,7 +193,7 @@ p {
 
     
 
-> **注意：**setup比beforeCreate还早。
+> 注意：setup比beforeCreate还早；<script setup> 中的代码会在每次组件实例被创建的时候执行。
 
 
 ### 组件
