@@ -54,12 +54,13 @@
 
 - `<style>`:
 
-  - `scoped`: 使用 `scoped` 后，父组件的样式将不会渗透到子组件中。
-    - `:deep()`: 穿透影响子组件样式。
-    - `:slotted()`:插槽选择器。
-    - `:global()`: 全局选择器
+  - `scoped`: 使用 `scoped` 后，父组件的样式将不会渗透到子组件中；
+  - 有三个伪类以应对不同的场景：
+    - `:deep()`: 穿透影响子组件样式，在父组件中修改子组件样式时很有用；
+    - `:slotted()`:插槽选择器，明确地将插槽内容作为选择器的目标，修改插槽内元素的样式；
+    - `:global()`: 全局选择器，在`scoped`内定义全局样式，不受作用域影响。
   - `v-bind()`：支持在style中动态绑定
-
+  
   ```vue
   <script setup>
   const theme = reactive({
@@ -88,25 +89,14 @@
   
 - Vue3.0也提供了 Composition API 形式的生命周期钩子，与Vue2.x中钩子对应关系如下（部分）：
   - `beforeCreate`======>`setup()`
-  
   - `created`==========>`setup()`
-  
   - `beforeMount` ======>`onBeforeMount`
-  
   - `mounted`==========>`onMounted`
-  
   - `beforeUpdate`======>`onBeforeUpdate`
-  
   - `updated` ==========>`onUpdated`
-  
   - `beforeUnmount` ====>`onBeforeUnmount`
-  
   - `unmounted` ========>`onUnmounted`
-  
   - `errorCaptured` ====> `onErrorCaptured`
-  
-  - 
-  
   
   > **注意：**setup比beforeCreate还早。
 
