@@ -48,9 +48,7 @@
   - 能够使用纯 TypeScript 声明 props 和自定义事件。
   - 更好的运行时性能 (其模板会被编译成同一作用域内的渲染函数，避免了渲染上下文代理对象)。
   - 更好的 IDE 类型推导性能 (减少了语言服务器从代码中抽取类型的工作)。
-- `defineProps`: 用来声明`props`
-- `defineEmits`：用来声明`emits`
-- `defineExpose`：组件中要暴露出去的属性和方法，父组件通过模版引用访问暴露出来的属性和方法。
+- 
 
 ### `<style>`:
 
@@ -80,25 +78,6 @@ p {
 </style>
 ```
 
-## 生命周期
-
-- Vue3.0中可以继续使用Vue2.x中的生命周期钩子，但有有两个被更名：
-  - `beforeDestroy`改名为 `beforeUnmount`
-  - `destroyed`改名为 `unmounted`
-  
-- Vue3.0也提供了 Composition API 形式的生命周期钩子，与Vue2.x中钩子对应关系如下（部分）：
-  - `beforeCreate`======>`setup()`
-  - `created`==========>`setup()`
-  - `beforeMount` ======>`onBeforeMount`
-  - `mounted`==========>`onMounted`
-  - `beforeUpdate`======>`onBeforeUpdate`
-  - `updated` ==========>`onUpdated`
-  - `beforeUnmount` ====>`onBeforeUnmount`
-  - `unmounted` ========>`onUnmounted`
-  - `errorCaptured` ====> `onErrorCaptured`
-  
-  > **注意：**setup比beforeCreate还早。
-
 ## setup
 
 `setup()` 钩子是在组件中使用组合式 API 的入口。
@@ -108,41 +87,83 @@ p {
 - setup有两种返回值：
   1. `return`一个对象，对象属性会暴露给模板和其他的选项式 API 钩子
   2. `return`一个渲染函数，此渲染函数会代替`<template>`模版。
-- setup有两个参数：
+- `setup(props,context)`有两个参数：
   1. 参数一：`props`组件的传值
   2. 参数二：`context`执行上下文，类似选项式组件中的`this`
 
 ## `<script setup>`
 
-#### 为什么要用`<script setup>`?
+### 为什么要用`<script setup>`?
 
 - 更少的样板内容，更简洁的代码。
 - 能够使用纯 TypeScript 声明 props 和自定义事件。
 - 更好的运行时性能 (其模板会被编译成同一作用域内的渲染函数，避免了渲染上下文代理对象)。
 - 更好的 IDE 类型推导性能 (减少了语言服务器从代码中抽取类型的工作)。
 
-#### 定义响应式数据
+### 内置属性？
 
-- `ref()`
-  - 接受基本类型，也可以是引用类型；返回响应式数据的引用对象（reference对象，简称ref对象）；
-  - 基本类型基于`defineProperty`原理，内部源码用的是class的get和set;
-  - 引用类型在内部借用`reactive()`；
-  - 使用时通过`.value`访问响应式数据；
-- `reactive()`
-  - 只接受对象，返回一个对象的响应式代理（proxy对象）；
-  - reactive定义的响应式数据是“深层次的”，嵌套属性同样是响应式的；
-  - 内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据进行操作；
-- `reactive`对比`ref`
-  - 从定义数据角度对比：
-    - ref用来定义：**基本类型数据**。
-    - reactive用来定义：**对象（或数组）类型数据**。
-    - 备注：ref也可以用来定义**对象（或数组）类型数据**, 它内部会自动通过`reactive`转为**代理对象**。
-  - 从原理角度对比：
-    - ref通过`Object.defineProperty()`的`get`与`set`来实现响应式（数据劫持）。
-    - reactive通过使用**Proxy**来实现响应式（数据劫持）, 并通过**Reflect**操作**源对象**内部的数据。
-  - 从使用角度对比：
-    - ref定义的数据：操作数据**需要**`.value`，**可以重新赋值**，重新赋之后依然保持响应。
-    - reactive定义的数据：操作数据与读取数据：**均不需要**`.value`；**不能重新赋值**，只能修改属性。
+- `defineProps`: 用来声明`props`
+- `defineEmits`：用来声明`emits`
+- `defineExpose`：组件中要暴露出去的属性和方法，父组件通过模版引用访问暴露出来的属性和方法。
+
+### 定义响应式数据
+
+#### `ref()`
+
+- 接受基本类型，也可以是引用类型；返回响应式数据的引用对象（reference对象，简称ref对象）；
+- 基本类型基于`defineProperty`原理，内部源码用的是class的get和set;
+- 引用类型在内部借用`reactive()`；
+- 使用时通过`.value`访问响应式数据；
+
+#### `reactive()`
+
+- 只接受对象，返回一个对象的响应式代理（proxy对象）；
+- reactive定义的响应式数据是“深层次的”，嵌套属性同样是响应式的；
+- 内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据进行操作；
+
+#### `reactive`对比`ref`
+
+- 从定义数据角度对比：
+  - ref用来定义：**基本类型数据**。
+  - reactive用来定义：**对象（或数组）类型数据**。
+  - 备注：ref也可以用来定义**对象（或数组）类型数据**, 它内部会自动通过`reactive`转为**代理对象**。
+- 从原理角度对比：
+  - ref通过`Object.defineProperty()`的`get`与`set`来实现响应式（数据劫持）。
+  - reactive通过使用**Proxy**来实现响应式（数据劫持）, 并通过**Reflect**操作**源对象**内部的数据。
+- 从使用角度对比：
+  - ref定义的数据：操作数据**需要**`.value`，**可以重新赋值**，重新赋之后依然保持响应。
+  - reactive定义的数据：操作数据与读取数据：**均不需要**`.value`；**不能重新赋值**，只能修改属性。
+
+### 生命周期
+
+- Vue3.0中可以继续使用Vue2.x中的生命周期钩子，但有有两个被更名：
+
+  - `beforeDestroy`改名为 `beforeUnmount`
+  - `destroyed`改名为 `unmounted`
+
+- Vue3.0也提供了 Composition API 形式的生命周期钩子，与Vue2.x中钩子对应关系如下（部分）：
+
+  - `beforeCreate`======>`setup()`
+
+  - `created`==========>`setup()`
+
+  - `beforeMount` ======>`onBeforeMount`
+
+  - `mounted`==========>`onMounted`
+
+  - `beforeUpdate`======>`onBeforeUpdate`
+
+  - `updated` ==========>`onUpdated`
+
+  - `beforeUnmount` ====>`onBeforeUnmount`
+
+  - `unmounted` ========>`onUnmounted`
+
+  - `errorCaptured` ====> `onErrorCaptured`
+
+    
+
+> **注意：**setup比beforeCreate还早。
 
 
 ### 组件
