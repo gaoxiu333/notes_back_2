@@ -136,34 +136,6 @@ p {
 - `defineEmits`：用来声明`emits`
 - `defineExpose`：组件中要暴露出去的属性和方法，父组件通过模版引用访问暴露出来的属性和方法。
 
-### 定义响应式数据
-
-#### `ref()`
-
-- 接受基本类型，也可以是引用类型；返回响应式数据的引用对象（reference对象，简称ref对象）；
-- 基本类型基于`defineProperty`原理，内部源码用的是class的get和set;
-- 引用类型在内部借用`reactive()`；
-- 使用时通过`.value`访问响应式数据；
-
-#### `reactive()`
-
-- 只接受对象，返回一个对象的响应式代理（proxy对象）；
-- reactive定义的响应式数据是“深层次的”，嵌套属性同样是响应式的；
-- 内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据进行操作；
-
-#### `reactive`对比`ref`
-
-- 从定义数据角度对比：
-  - ref用来定义：**基本类型数据**。
-  - reactive用来定义：**对象（或数组）类型数据**。
-  - 备注：ref也可以用来定义**对象（或数组）类型数据**, 它内部会自动通过`reactive`转为**代理对象**。
-- 从原理角度对比：
-  - ref通过`Object.defineProperty()`的`get`与`set`来实现响应式（数据劫持）。
-  - reactive通过使用**Proxy**来实现响应式（数据劫持）, 并通过**Reflect**操作**源对象**内部的数据。
-- 从使用角度对比：
-  - ref定义的数据：操作数据**需要**`.value`，**可以重新赋值**，重新赋之后依然保持响应。
-  - reactive定义的数据：操作数据与读取数据：**均不需要**`.value`；**不能重新赋值**，只能修改属性。
-
 ### 生命周期
 
 - Vue3.0中可以继续使用Vue2.x中的生命周期钩子，但有有两个被更名：
@@ -194,6 +166,118 @@ p {
     
 
 > 注意：setup比beforeCreate还早；<script setup> 中的代码会在每次组件实例被创建的时候执行。
+
+### 响应式数据
+
+#### `ref()`
+
+- 接受基本类型，也可以是引用类型；返回响应式数据的引用对象（reference对象，简称ref对象）；
+- 基本类型基于`defineProperty`原理，内部源码用的是class的get和set;
+- 引用类型在内部借用`reactive()`；
+- 使用时通过`.value`访问响应式数据；
+
+#### `reactive()`
+
+- 只接受对象，返回一个对象的响应式代理（proxy对象）；
+- reactive定义的响应式数据是“深层次的”，嵌套属性同样是响应式的；
+- 内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据进行操作；
+
+#### `reactive`对比`ref`
+
+- 从定义数据角度对比：
+  - ref用来定义：**基本类型数据**。
+  - reactive用来定义：**对象（或数组）类型数据**。
+  - 备注：ref也可以用来定义**对象（或数组）类型数据**, 它内部会自动通过`reactive`转为**代理对象**。
+- 从原理角度对比：
+  - ref通过`Object.defineProperty()`的`get`与`set`来实现响应式（数据劫持）。
+  - reactive通过使用**Proxy**来实现响应式（数据劫持）, 并通过**Reflect**操作**源对象**内部的数据。
+- 从使用角度对比：
+  - ref定义的数据：操作数据**需要**`.value`，**可以重新赋值**，重新赋之后依然保持响应。
+  - reactive定义的数据：操作数据与读取数据：**均不需要**`.value`；**不能重新赋值**，只能修改属性。
+
+#### 浅响应
+
+- `shallowRef`
+- `shallowReactive`
+- `shallowReadonly`
+
+#### computed函数
+
+与Vue2配置一样
+
+- 只有`get`没有`set`时返回一个只读的响应式ref对象；
+- 既有`get`也有`set`会创建一个可写的 ref 对象，可以用在`v-modal`指令上。
+
+```vue
+<script setup>
+  const count = ref(1)
+  const plusOne = computed({
+    get: () => count.value + 1,
+    set: (val) => {
+      count.value = val - 1
+    }
+  })
+
+  plusOne.value = 1
+  console.log(count.value) // 0
+</script>
+```
+
+
+
+#### watch函数
+
+与Vue2配置一样
+
+- 监听一个getter函数
+  - 回调只在此函数的返回值变化时才会触发，也就是引用发生变化才会触发；
+  - 如果开启深层级监听需要使用`{ deep: true }`
+  - 直接侦听一个响应式对象时，侦听器会自动启用深层模式
+
+```vue
+<script setup>
+ // 侦听一个 getter 函数：
+const state = reactive({ count: 0 })
+watch(
+  () => state.count,
+  (count, prevCount) => { /* ... */},
+  {
+    immediate：true,// 默认：false, 定义时立即执行
+    deep:true,//   默认：false，开启深度监听
+    flush:'pre' | 'post' | 'sync', // 默认：pre,回调的触发时机:数据变更后，DOM更新前｜DOM更新后｜异步
+  }
+)
+// 侦听一个 ref：
+const count = ref(0)
+watch(count, (count, prevCount) => {/* ... */})
+// 监听多个源，参数是一个数组
+watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {/* ... */})
+
+</script>
+```
+
+#### `watchEffect()`
+
+- watch的套路是：既要指明监视的属性，也要指明监视的回调。
+- watchEffect的套路是：不用指明监视哪个属性，监视的回调中用到哪个属性，那就监视哪个属性。
+- watchEffect有点像computed：
+  - 但computed注重的计算出来的值（回调函数的返回值），所以必须要写返回值。
+  - 而watchEffect更注重的是过程（回调函数的函数体），所以不用写返回值。
+
+```vue
+<script setup>
+//watchEffect 定义时会立即执行，回调内定义的数据发生变化也会执行。
+watchEffect(()=>{
+    const x1 = sum.value
+    const x2 = person.age
+    console.log('watchEffect配置的回调执行了')
+})
+</script>
+```
+
+
+
+### 自定义hook函数
 
 
 ### 组件
