@@ -227,12 +227,11 @@ p {
 
 #### watch函数
 
-与Vue2配置一样
+侦听一个或多个响应式数据源，并在数据源变化时调用所给的回调函数。
 
 - 监听一个getter函数
-  - 回调只在此函数的返回值变化时才会触发，也就是引用发生变化才会触发；
-  - 如果开启深层级监听需要使用`{ deep: true }`
-  - 直接侦听一个响应式对象时，侦听器会自动启用深层模式
+- 监听一个reactive
+- 监听一个ref
 
 ```vue
 <script setup>
@@ -256,17 +255,20 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {/* ... */})
 </script>
 ```
 
-#### `watchEffect()`
+#### watchEffect
 
-- watch的套路是：既要指明监视的属性，也要指明监视的回调。
-- watchEffect的套路是：不用指明监视哪个属性，监视的回调中用到哪个属性，那就监视哪个属性。
-- watchEffect有点像computed：
-  - 但computed注重的计算出来的值（回调函数的返回值），所以必须要写返回值。
-  - 而watchEffect更注重的是过程（回调函数的函数体），所以不用写返回值。
+立即执行函数，并在依赖更改时重新执行；依赖收集和响应式追踪和`computed`很像。
+
+- vs`watch`:watch需要指明监听的响应式数据，监听的那个响应式数据修改时才会执行。
+  - watch能明确监听哪一个值发生变化时执行；
+  - watch能访问前一个值和当前值
+- vs`computed`:都不需要指明响应式数据，函数体内有的响应数据都会被监听；
+  - computed需要return一个值；
+  - watch不需要return任何值；
 
 ```vue
 <script setup>
-//watchEffect 定义时会立即执行，回调内定义的数据发生变化也会执行。
+//watchEffect 定义时会立即执行，回调内定义的响应数据发生变化也会执行。
 watchEffect(()=>{
     const x1 = sum.value
     const x2 = person.age
