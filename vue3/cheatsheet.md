@@ -24,6 +24,7 @@ npm run dev
   <span v-html='rawHTML'></span>
   ```
 
+- JavaScript表达式
 
   ```html
   ✅ <span> {{ msg.reverse() }} </span> <!--js表达式可以 -->
