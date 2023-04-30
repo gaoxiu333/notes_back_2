@@ -68,6 +68,7 @@ console.log(count.value) // 1
   - 在`JavaScript`表达式中**不会解包**
 - 在响应式对象中，作为响应式对象的一个属性值时，并且相互关联
   - 数组和`Map`类型的对象除外
+- 作为`watch`的监听源时
 
 在`<template>`中
 
@@ -151,10 +152,10 @@ const plusOne = computed({
     count.value = val - 1
   },
   onTrack(e) {
-    // 被追踪为依赖时触发（访问读取时）
+    // 被追踪为依赖时触发（被访问读取时）
   },
   onTrigger(e) {
-    // 当被更改时触发（修改时）
+    // 当被更改时触发（被设置新的值）
   }
 })
 
@@ -163,4 +164,218 @@ console.log(count.value) // 0
 ```
 
 ## `watch()`
+
+在每次响应式状态发生变化时触发回调函数：
+
+**描述：**
+
+- 可以监听一个返回函数
+- 可以监听一个响应式对象
+- 或者是以上两种类型的合成数组
+
+**参数：**
+
+接收三个参数：`source`,`callback`,`options`
+
+- source： 响应式数据或者返回函数
+- callback：回调函数
+- options：一个可选的配置项目
+  - **`immediate`**：在侦听器创建时立即触发回调。第一次调用时旧值是 `undefined`。
+  - **`deep`**：如果源是对象，强制深层遍历，以便在深层级变更时触发回调。
+  - **`flush`**： 调整回调函数的刷新时机；默认`pre`将会使侦听器延迟到组件渲染之后再执行。
+  - **`onTrack / onTrigger`**：调试侦听器的依赖。
+
+
+> 注意：
+>
+> - 监听源是一个对象时；默认开始深层监听
+> - 监听源是一个返回函数时，需要显示的加上`deep:true`进行深层监听
+
+监听一个简单类型的值
+
+```js
+const state = reactive({ count: 0 })
+watch(
+  () => state.count, // 不能直接监听 state.count
+  (count, prevCount) => {
+    /* ... */
+  }
+)
+// 或者
+const count = ref(0)
+watch(count, (count, prevCount) => {
+  /* ... */
+})
+```
+
+监听一个引用类型
+
+```js
+const state = reactive({ count: 0 })
+// 直接监听，默认开启深层监听
+watch(state,   (newValue, oldValue) => {
+    // 注意：`newValue` 此处和 `oldValue` 是相等的
+ })
+// 需要显示 指定 deep:true 开启深层监听
+watch(
+  () => state,
+  (newValue, oldValue) => {
+    // newValue === oldValue
+  },
+  { deep: true }
+)
+```
+
+停止监听和清理副作用
+
+```js
+const stop = watch(id, async (newId, oldId, onCleanup) => {
+  const { response, cancel } = doAsyncWork(newId)
+  // 当 `id` 变化时，`cancel` 将被调用，
+  // 取消之前的未完成的请求
+  onCleanup(cancel)
+  data.value = await response
+})
+// 当已不再需要该侦听器时：
+stop()
+```
+
+## `watchEffect()`
+
+立即执行副作用函数（回调函数），副作用函数内依赖放生变化时，重新执行。
+
+**描述：**
+
+- 不需要指定监听源
+- 和`computed()`类似，依赖修改时立即执行。
+- 不能对比变化前后对值，需要的对比的话建议使用`watch()`指明监听源
+
+```js
+//watchEffect 定义时会立即执行，回调内定义的响应数据发生变化也会执行。
+watchEffect(()=>{
+    const x1 = sum.value
+    const x2 = person.age
+    console.log('watchEffect配置的回调执行了')
+})
+```
+
+## `watchPostEffect()`
+
+`watchEffect()`使用 `flush: 'post'` 选项时的别名；将会使侦听器延迟到组件渲染之后再执行。
+
+## `watchSyncEffect()`
+
+`watchEffect()`使用 `flush: 'sync'` 选项时的别名；响应式依赖发生改变时立即触发侦听器。
+
+## `customRef()`
+
+创建一个自定义的 响应式数据，显式声明对其依赖追踪和更新触发的控制方式。
+
+**示例**
+
+创建一个防抖 ref，即只在最近一次 set 调用后的一段固定间隔后再调用：
+
+```js
+import { customRef } from 'vue'
+
+export function useDebouncedRef(value, delay = 200) {
+  let timeout
+  return customRef((track, trigger) => {
+    return {
+      get() {
+        track()
+        return value
+      },
+      set(newValue) {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+          value = newValue
+          trigger()
+        }, delay)
+      }
+    }
+  })
+}
+```
+
+## `toRaw()`
+
+根据一个 Vue 创建的代理返回其原始对象；可以返回一下代理对象对应的原始对象：
+
+- `reactive()`
+- `readonly()`
+- `shallowReactive()`
+- `shallowReadonly()`
+
+```js
+const foo = {}
+const reactiveFoo = reactive(foo)
+
+console.log(toRaw(reactiveFoo) === foo) // true
+```
+
+## `unref()`
+
+如果参数是 ref，则返回内部值，否则返回参数本身。这是 `val = isRef(val) ? val.value : val` 计算的一个语法糖。
+
+```js
+const count = ref(1)
+count.value === unref(count) // true
+```
+
+## `toRef()`
+
+基于一个响应式对象，创建一个关联的响应式数据。改变新创建的响应式数据，会影响原来的响应式对象。
+
+```js
+const state = reactive({
+  foo: 1,
+  bar: 2
+})
+
+const fooRef = toRef(state, 'foo')
+
+// 更改该 ref 会更新源属性
+fooRef.value++
+console.log(state.foo) // 2
+
+// 更改源属性也会更新该 ref
+state.foo++
+console.log(fooRef.value) // 3
+```
+
+## `toRefs()`
+
+将一个响应式对象转换为一个普通对象，普通对象的属性都通过`toRef()`创建响应式数据关联源数据。
+
+```js
+function useFeatureX() {
+  const state = reactive({
+    foo: 1,
+    bar: 2
+  })
+
+  // 在返回时都转为 ref
+  return toRefs(state)
+}
+
+// 可以解构而不会失去响应性
+const { foo, bar } = useFeatureX()
+```
+
+## `其他响应式API`
+
+- `shallowRef()`：`ref()`的浅层作用形式。
+- `shallowReactive()`：`reactive()`的浅层作用形式。
+- `readonly()`：返回一个原值的只读代理。
+- `shallowReadonly()`：`readonly()`的浅层作用形式。
+- `triggerRef()`：强制触发依赖于一个浅层响应数据的副作用。
+- `markRaw()`：将一个对象标记为不可被转为代理。返回该对象本身。
+- `effectScope()`：创建一个响应式作用域。
+- `getCurrentScope()`：获取当前活跃的作用域。
+- `onScopeDispose()`：相关的 effect 作用域停止时会调用这个回调函数。
+- `isRef()`：检查值是否是一个ref
+- `isProxy()`：检查是否是一个代理对象。
+- `isProxy()`：检查是否由`reactive()`或`shallowReactive()`创建。
+- `isReadonly()`：检查是否由`readonly()`、`shallowReadonly()`或没有`set`的`computed`
 
