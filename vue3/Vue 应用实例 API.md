@@ -94,7 +94,7 @@ const MyComponent = app.component('my-component')
 
 #### 示例
 
-对于自定义指令来说，一个很常见的情况是仅仅需要在 `mounted` 和 `updated` 上实现相同的行为，除此之外并不需要其他钩子
+简写形式只有两个钩子`mounted`，`updated`；通常情况下，指令仅需要这两钩子就够啦！
 
 ```js
   // 简写形式
