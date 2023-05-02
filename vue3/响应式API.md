@@ -146,18 +146,21 @@ plusOne.value++ // 错误
 
 ```js
 const count = ref(1)
-const plusOne = computed({
+const plusOne = computed(
+{
   get: () => count.value + 1,
   set: (val) => {
     count.value = val - 1
-  },
+  }
+},
+{
   onTrack(e) {
     // 被追踪为依赖时触发（被访问读取时）
   },
   onTrigger(e) {
     // 当被更改时触发（被设置新的值）
   }
-})
+)
 
 plusOne.value = 1
 console.log(count.value) // 0
@@ -373,7 +376,7 @@ const { foo, bar } = useFeatureX()
 - `markRaw()`：将一个对象标记为不可被转为代理。返回该对象本身。
 - `effectScope()`：创建一个响应式作用域。
 - `getCurrentScope()`：获取当前活跃的作用域。
-- `onScopeDispose()`：相关的 effect 作用域停止时会调用这个回调函数。
+- `onScopeDispose()`：相关的 effect 作用域停止时会调用这个回调函数，通常用在hooks中，每个组件也可以被认为是 effect 作用域，组件被注销，作用域被停止。
 - `isRef()`：检查值是否是一个ref
 - `isProxy()`：检查是否是一个代理对象。
 - `isProxy()`：检查是否由`reactive()`或`shallowReactive()`创建。

@@ -11,25 +11,25 @@ npm run dev
 
 ## 模版语法
 
-- 文本插值
+### 文本插值
 
-  ```html
-  <span> {{ msg }} </span>
-  <span v-text='msg'></span>
-  ```
+```html
+<span> {{ msg }} </span>
+<span v-text='msg'></span>
+```
 
-- 原始 HTML
+### 原始 HTML
 
-  ```html
-  <span v-html='rawHTML'></span>
-  ```
+```html
+<span v-html='rawHTML'></span>
+```
 
-- JavaScript表达式
+### 表达式
 
-  ```html
-  ✅ <span> {{ msg.reverse() }} </span> <!--js表达式可以 -->
-  ❌ <span> {{ let msg = 'hi' }} </span><!--js语句不行 -->
-  ```
+```html
+✅ <span> {{ msg.reverse() }} </span> <!--js表达式可以 -->
+❌ <span> {{ let msg = 'hi' }} </span><!--js语句不行 -->
+```
 
 ## 指令
 
@@ -38,13 +38,13 @@ npm run dev
 - ` v-else`:像普通的条件语句一样，添加一个“else 区块”；
 - `v-show`: 控制CSS`display`的属性来显示；
 - `v-text`: 更新文本内容；
-- `v-html`: 更新innerHTML
+- `v-html`: 使用`innerHTML`更新内容；
 - `v-for` : 循环渲染一个对象/数组
 - `v-on` or `@`: 监听DOM事件
 - `v-bind` or` :`： 动态绑定`attribute`或组件的`prop`
 - `v-once` : 只渲染一次，之后有更新也不会重新渲染
 
-## 事件处理
+### 事件处理
 
 **事件绑定**
 
@@ -54,11 +54,11 @@ npm run dev
 <div @click='count'>Increase</div>
 <!-- 内联事件处理器 -->
 <button @click="count++">Add 1</button>
-<button @click="count()">Add 1</button>
+<button @click="increment()">Add 1</button>
 <!-- 使用特殊的 $event 变量 -->
-<button @click="count($event)">Add 1</button>
+<button @click="increment($event)">Add 1</button>
 <!-- 使用内联箭头函数 -->
-<button @click="(event)=>count(event)">Add 1</button>
+<button @click="(event)=>increment(event)">Add 1</button>
 ```
 
 **修饰符**
@@ -68,7 +68,7 @@ npm run dev
 - `.once` - 最多触发一次处理函数。
 - `.self` - 只监听当前元素本身。
 
-## 列表渲染
+### 列表渲染
 
 ```html
 <li v-for='(item, index) in items'>
@@ -76,9 +76,9 @@ npm run dev
 </li>
 ```
 
-### 绑定
+### 绑定`v-bind`
 
-**属性绑定(Attribute)**
+### 属性绑定(Attribute)
 
 ```html
 <div v-bind:id='objectID'>...</div>
@@ -86,19 +86,19 @@ npm run dev
 <div :id='objectID'>...</div>
 ```
 
-**表单绑定**
+### 表单绑定
 
 ```html
 <input v-model='email' />
 ```
 
-修饰符
+**修饰符**
 
 - `.lazy` -使用`change`事件触发更新。
 - `.trim` - 去除两端的空格。
 - `.number`- 使用`parseFloat`转换为数字
 
-**样式绑定**
+### 样式绑定
 
 ```html
 <input :class='{error: hasError}' />
@@ -107,72 +107,100 @@ npm run dev
 
 ## 组件
 
-- prop&emit
+### defineComponent
 
-  ```html
-  <custom :msg='s' @someEvent='s = $event'/>
-  // custom 组件
-  <button @click="$emit('someEvent')">click me</button>
-  ```
+```js
+ export default defineComponent({
+   data(){},
+   setup(){},
+   created(){}
+   /* ... */
+ })
+// __PURE__ 注释 是告诉 webpack 组件可以被 tree-shake
+export default /*#__PURE__*/ defineComponent(/* ... */)
+```
 
-- v-modal
+### 传值（prop）
 
-  ```html
-  // 父组件
-  <CustomInput v-model="searchText" />
-  =============================
-  // CustomInput 组件
-  <template>
-    <input
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-    />
+```html
+<custom :msg='s' @someEvent='s = $event'/>
+```
+
+### 事件（emit)
+
+```html
+<custom :msg='s' @someEvent='s = $event'/>
+// custom 组件
+<button @click="$emit('someEvent')">click me</button>
+```
+
+### 组件双向绑定（v-modal）
+
+```html
+// 父组件
+<CustomInput v-model="searchText" />
+=============================
+// CustomInput 组件
+<template>
+  <input
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+  />
+</template>
+```
+
+### 插槽（solt）
+
+基本使用
+
+```html
+<!-- custom -->
+<div>
+  Hello World
+  <slot></slot> <!-- 插槽出口 -->
+</div>
+==========================
+<!-- 父组件 -->
+<template>
+  <Custom>
+     <!-- 插槽内容 -->
+  </Custom>
+</template>
+```
+
+具名插槽
+
+```html
+<!-- custom -->
+<div>
+  <slot name='top' :text="greetingMessage" :count="1"></slot>
+  <slot name='bottom'></slot>
+  <slot></slot>
+</div>
+=================================
+<!-- 父组件 -->
+<Custome>
+  <template v-slot:top="{text,count}">
+    {{text}}{{count}}     <!-- 作用域插槽 -->
   </template>
-  ```
-
-
-- 插槽
-
-  基本使用
-
-  ```html
-  <!-- custom -->
-  <div>
-    Hello World
-    <slot></slot> <!-- 插槽出口 -->
-  </div>
-  ==========================
-  <!-- 父组件 -->
-  <template>
-    <Custom>
-       <!-- 插槽内容 -->
-    </Custom>
+  <template #bottom>
+    <!-- bottom 插槽的内容 -->
   </template>
-  ```
+   <template #default>
+      <!-- default 也可以指定默认插槽 -->
+  </template>
+</Custome>
+```
 
-  具名插槽
 
-  ```html
-  <!-- custom -->
-  <div>
-    <slot name='top' :text="greetingMessage" :count="1"></slot>
-    <slot name='bottom'></slot>
-    <slot></slot>
-  </div>
-  =================================
-  <!-- 父组件 -->
-  <Custome>
-    <template v-slot:top="{text,count}">
-      {{text}}{{count}}     <!-- 作用域插槽 -->
-    </template>
-    <template #bottom>
-      <!-- bottom 插槽的内容 -->
-    </template>
-     <template #default>
-        <!-- default 也可以指定默认插槽 -->
-    </template>
-  </Custome>
-  ```
+
+### 
+
+### 杂项
+
+组件缓存
+
+
 
 ## 动态组件
 
