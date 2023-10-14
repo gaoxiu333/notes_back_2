@@ -124,3 +124,12 @@ npm i	# 重新安装一遍
 其他参考：
 
 - [npm audit](http://eux.baidu.com/blog/fe/npm%20aduit%E4%BA%8C%E4%B8%89%E4%BA%8B)
+
+## npm 发布包
+
+TODO
+- 登陆/发包
+- npmrc 文件配置
+- 设置源
+- 设置代理
+- package.json 文件说明
