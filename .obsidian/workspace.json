@@ -1,0 +1,269 @@
+{
+  "main": {
+    "id": "bcc7353d31ea9665",
+    "type": "split",
+    "children": [
+      {
+        "id": "bc6576e74a3884fc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e79b0f720238e185",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "草稿箱/包管理器/node 包管理器.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "da9e710bb2ac4e5b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "草稿箱/TODO.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "cf3f00f4d7141d22",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "草稿箱/TODO.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "9249172e39ed2631",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "草稿箱/React Query.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "7d945289cb4a36dd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "草稿箱/React Query.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "277ef6b13a4c1b95",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "草稿箱/Docker.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "34b92713177ed2f3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DEV ENV/Mac Setup.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 6
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "dc1ec8ba4f8413ca",
+    "type": "split",
+    "children": [
+      {
+        "id": "b67a41da2827ff41",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b209903af98a245b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6683bbe1e7f76985",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "git 配置",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a3f3283dc8292f71",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "069c01ada480cbcf",
+    "type": "split",
+    "children": [
+      {
+        "id": "d7c1cedf517ee35d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0f6fce337ad24de2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "DEV ENV/Mac Setup.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "740f6c36485e8f15",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "DEV ENV/Mac Setup.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f93049d9b6f60785",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "63eecba4dfe866e0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "DEV ENV/Mac Setup.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "34b92713177ed2f3",
+  "lastOpenFiles": [
+    "DEV ENV/HomeBrew.md",
+    "DEV ENV/软件.md",
+    "DEV ENV/Github/Github 使用.md",
+    "DEV ENV/Github/Git 配置.md",
+    "DEV ENV/Mac Setup.md",
+    "DEV ENV/代码 规范.md",
+    "DEV ENV/VSCode/基本配置和常用插件.md",
+    "草稿箱/MAC.md",
+    "草稿箱/Docker.md",
+    "工作随记/移动端调研.md",
+    "未命名.md",
+    "工作随记",
+    "速成学习.md",
+    "DEV ENV/Github/git submodules.md",
+    "草稿箱/阿里云服务器.md",
+    "草稿箱/随手关注的博客.md",
+    "草稿箱/React Query.md",
+    "草稿箱/TODO.md",
+    "Linux",
+    "DEV ENV",
+    "FE/思维导图/浏览器缓存思维导图.png",
+    "imags/渲染进程5.png",
+    "imags/渲染进程4.png",
+    "imags/渲染进程3.png",
+    "imags/渲染进程2.png",
+    "imags/浏览器渲染进程1.png",
+    "imags/7.png",
+    "imags/06.png",
+    "TODO.md",
+    "README.md",
+    "FE/React 生态.md",
+    "资源.md",
+    "http缓存.md",
+    "FE/前端进阶.md",
+    "求职/郜修简历-前端WEB工程师.pdf",
+    "笔记要点.md",
+    "FE/01-配置React环境.md",
+    "SVG/基础.md",
+    "FE",
+    "DEV ENV/Github",
+    "未命名 1",
+    "文章摘录/The Linux Command Line",
+    "文章摘录",
+    "Linux/shell"
+  ]
+}
