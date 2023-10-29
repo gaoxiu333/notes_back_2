@@ -44,6 +44,8 @@ Host github.com
 
 ```bash
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+# 或者以下命令不区分操作系统
+ssh-add -K ~/.ssh/id_ed25519
 ```
 
 ### 复制 公钥
