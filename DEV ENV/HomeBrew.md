@@ -40,10 +40,18 @@ brew uninstall <package>
 
 ### 查看软件
 
-查看已经安装的软件
+查看已经安装的包
 
 ```bash
-brew list --versions
+# 查看本地安装的所有包和应用程序
+brew list
+# 包括版本
+brew list --versions 
+# 只查看应用程序
+brew casks
+# 查看所有安装的包（排除依赖）
+brew leaves
+
 ```
 
 查看是否有软件需要更新

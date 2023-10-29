@@ -100,6 +100,7 @@ Zsh 主题
 Node.js 是基于 Chrome 的 V8 JavaScript 引擎构建的 JavaScript 运行时。
 
 node 有多个版本管理工具
+
 - fnm - rust 写的 node 版本管理工具
 - nvm - 比较流行的 node 版本管理工具
 - asdf - asdf 是一个 CLI 工具，可以按项目管理多个语言运行时版本。它就像`gvm`、`nvm`、`rbenv`& `pyenv`（以及更多）合而为一！只需安装您的语言的插件即可！
@@ -116,6 +117,14 @@ brew install fnm
 # .zshrc
 eval "$(fnm env --use-on-cd)"
 ```
+
+pnpm - 使用 corepack 安装 pnpm
+
+```bash
+corepack enable # 开启 pnpm、yarn
+corepack disable # 关闭
+```
+
 ### python
 
 Mac 系统自带 python，安装在 `/usr/bin/python3`
@@ -165,3 +174,12 @@ brew install --cask google-chrome visual-studio-code feishu wechat obsidian
 
 ### RSS
 - NetNewsWire
+
+## 问题
+
+- mac 上的换行符和 windows 上的换行符格式不一致导致 eslint 报错的问题该怎么解决？
+
+## 参考
+
+[mac setup](https://github.com/sb2nov/mac-setup)
+[webstom 配置教程](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
