@@ -167,9 +167,10 @@ brew install git
 - 飞书
 - 微信
 - obsidian
+- 腾讯柠檬？
 
 ```bash
-brew install --cask google-chrome visual-studio-code feishu wechat obsidian
+brew install --cask google-chrome visual-studio-code feishu wechat obsidian tencent-lemon
 ```
 
 ### RSS

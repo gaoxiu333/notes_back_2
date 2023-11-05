@@ -131,3 +131,6 @@ docker rmi $(docker images -q)
 ## 参考
 
 [Docker — 北京图灵学院](http://docker.baoshu.red/)
+[Docker 从入门到实践](https://yeasy.gitbook.io/docker_practice/)
+[Docker 官方文件](https://docs.docker.com/desktop/install/mac-install/)
+[Docker 入门](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
