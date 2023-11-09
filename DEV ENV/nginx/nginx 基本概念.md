@@ -4,6 +4,12 @@
 
 ## 安装
 
+### Mac 
+
+```bash
+brew update && brew install nginx
+```
+
 ## 理解Nginx的基本概念
 
 ## 配置文件结构
