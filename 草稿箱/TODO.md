@@ -24,3 +24,21 @@ shell 文件操作：
 参考
 https://www.kancloud.cn/thinkphp/linux-command-line/39436
 
+
+## 博客
+
+想写一篇博客对比 node、react、vue等生态下各种工具的对比，以及github的星数量
+- 需要爬虫吗？
+- github 星数
+- 项目开始时间
+- 项目 iuss活跃数量
+- 最新更新时间
+- 要不要考虑活跃状态？
+
+
+## 新闻咨询
+
+搭建自己的 ssr？
+或者构建
+忘记之前使用的 srr工具叫啥了，明天用上吧
+

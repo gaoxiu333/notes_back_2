@@ -1,5 +1,5 @@
 
-## 查看Nginx
+## 查看 nginx
 
 ```
 # 仅查看版本
@@ -8,7 +8,6 @@ nginx -v
 # 查看nginx配置选项
 nginx -V
 ```
-
 
 ## 启动
 
