@@ -42,3 +42,33 @@ https://www.kancloud.cn/thinkphp/linux-command-line/39436
 或者构建
 忘记之前使用的 srr工具叫啥了，明天用上吧
 
+
+## 后端学习路线
+
+参考1
+
+快的话用 T3 ，感觉麻烦可以用 mern  
+T3(React/Next/trpc)  
+mern(Mongodb/Express/React/Node)
+
+参考2 
+
+|比较新的开源项目 civitai 就是整个 nextjs +prisma ，不用其他后端库 [https://github.com/civitai/civitai](https://github.com/civitai/civitai)|
+
+参考3
+
+简单的直接 nextjs+prisma 就可以了
+
+参考4
+
+个人独立项目一直用的方案是：  
+单页：vite + react + antd  
+SSR：nextjs  
+API：nestjs + typeorm
+
+参考5
+
+个人项目，如果很急，就前后端 JS 一把梭。也就是大家普遍选择的 nextjs+nestjs 。  
+（如果是接私活我也选择这种，因为语言统一）  
+  
+不过我觉得，既然是个人项目，那应该不急吧，最好顺便学多一门编程语言，知识面广泛点。。所以我建议是 next(JS) + gin(Go) / spring boot(Java) 。
