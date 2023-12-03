@@ -116,6 +116,92 @@ npx eslint src --fix
 
 ### Git
 
+#### 依赖 
+
+- lint-staged
+- husky
+- simple-git-hooks
+- commitlint
+- [semantic-release](https://github.com/semantic-release/semantic-release)
+
+`simple-git-hooks` 和 `husky` 都可以用于管理 Git 钩子，执行相应的脚本。这里选用前者，因为它更简单。
+
+
+#### `simple-git-hooks`
+
+安装
+
+```bash
+pnpm add simple-git-hooks -D
+
+# 如果以前配置过 hooks 或者遇到问题，可以删除以前的 hooks；也配置过可以跳过
+git config core.hooksPath .git/hooks/
+rm -rf .git/hooks
+
+# 更新 ./git/hooks
+npx simple-git-hooks
+```
+
+package.json 配置使用
+
+```json
+{
+	  "simple-git-hooks": {
+	      "pre-commit": "npx lint-staged",
+		}
+}
+```
+
+配置
+
+```json
+"check": "tsc --incremental --noEmit",
+{
+ "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged && pnpm check",
+    "commit-msg": "node scripts/verifyCommit.js"
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint",
+      "prettier --parser=typescript --write"
+    ]
+  },
+}
+```
+
+使用 `--no-verify` 跳过hooks
+
+```bash
+git commit -m "any commit" --no-verify
+```
+
+#### lint-staged
+
+主要用途是在代码提交之前，只对暂存区中的文件进行代码检查或其他操作，以确保即将提交的代码是符合规范的。
+
+```bash
+# 安装完后在 simple-git-hooks 进行配置。
+pnpm add lint-staged -D
+
+```
+
+如果是 `monorepo` 仓库，在子项目的根目录添加配置文件`.lintstagedrc.json`
+
+```json
+{ "*.md": "prettier --write" }
+```
+
+> lint-staged 会发现与每个暂存文件最接近的配置
+
+
+#### TODO
+
+`commit-msg` - 究竟是自定义实现还是使用现成的？
+
 ### 打包工具
 
 
