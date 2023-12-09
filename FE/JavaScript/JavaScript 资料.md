@@ -1,1 +1,2 @@
- 
+- [MDN JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+- [JavaScript Info](https://zh.javascript.info/)
