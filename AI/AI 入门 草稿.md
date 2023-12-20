@@ -272,4 +272,14 @@ https://github.com/dair-ai/Prompt-Engineering-Guide?tab=readme-ov-file
 
 - 🌟 [OpenAI 食谱](https://github.com/openai/openai-cookbook) 🌟
 - 🧑‍💻 [提示黑客](https://learnprompting.org/docs/category/-prompt-hacking) 🧑‍💻
-- 📚 [Dair.ai 提示工程指南](https://github.com/dair-ai/Prompt-Engineering-Guide) 📚
+- 📚 [Dair.ai 提示工程指南](https://github.com/dair-ai/Prompt-Engineering-Guide) 📚、
+- [提示词工程](https://github.com/brexhq/prompt-engineering?tab=readme-ov-file)
+
+----
+## 资源
+
+[少数派推荐的ai合集](https://flowus.cn/flowus101/share/be634aa4-9576-4bd7-807d-0194382675e5#1825e346-7cde-41c0-ab15-7c9b0f8dd76b)、
+- [EmergentMind](https://sspai.com/link?target=https%3A%2F%2Femergentmind.com%2F)：一个专门收集互联网上 ChatGPT 优秀示例用法的国外站点。
+- - [The Ultimate Collection of ChatGPT Products and Prompts](https://sspai.com/link?target=https%3A%2F%2Fchatgpt.getlaunchlist.com%2F)：按照使用场景分门别类收集了不少 ChatGPT Prompts.
+- - [Learn Prompting](https://sspai.com/link?target=https%3A%2F%2Flearnprompting.org%2F)：一个关于如何与 AI 交互的免费、开源站点。
+- [ChatGPT教程：使用资源聚合盘点——入门、提示词Prompts站点、GPT工具、AI工具](https://sspai.com/post/78399)
