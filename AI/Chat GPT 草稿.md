@@ -283,3 +283,11 @@ https://github.com/dair-ai/Prompt-Engineering-Guide?tab=readme-ov-file
 - - [The Ultimate Collection of ChatGPT Products and Prompts](https://sspai.com/link?target=https%3A%2F%2Fchatgpt.getlaunchlist.com%2F)：按照使用场景分门别类收集了不少 ChatGPT Prompts.
 - - [Learn Prompting](https://sspai.com/link?target=https%3A%2F%2Flearnprompting.org%2F)：一个关于如何与 AI 交互的免费、开源站点。
 - [ChatGPT教程：使用资源聚合盘点——入门、提示词Prompts站点、GPT工具、AI工具](https://sspai.com/post/78399)
+
+
+
+
+---- 
+## 知乎
+
+https://www.zhihu.com/question/594837899/answer/3323645451?utm_psn=1718768358122733568
