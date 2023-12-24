@@ -1,8 +1,6 @@
 ## 前言
 
-ChatGPT 讨论热浪中有许多种不同的声音，千万不要陷入其中被误导。你觉得 ChatGPT 毫无新意难堪大用，可能会错失竞争优势；你觉得 ChatGPT 无所不能，也会癫狂而后深深失望。
 
-摆正认识，把它当成一个有趣的大语言模型、一次 AI 工程化的成功开端，专注于尝试如何利用它改进自己的工作流程，才能真正获得益处。
 ## ChatGPT
 
 ## Midjourney
@@ -291,3 +289,17 @@ https://github.com/dair-ai/Prompt-Engineering-Guide?tab=readme-ov-file
 ## 知乎
 
 https://www.zhihu.com/question/594837899/answer/3323645451?utm_psn=1718768358122733568
+
+----
+其他资料
+
+- [OpenAI](https://www.openai.com/)，因为开发了 GPT 系列语言模型。
+- [GPT-4](https://github.com/openai/gpt-4)，因为提供了底层语言模型。
+- [Hugging Face](https://huggingface.co/)，因为他们在 NLP 和开源工具上的广泛工作。
+- [awesome-chatgpt](https://github.com/OpenMindClub/awesome-chatgpt)，因为他们在 ChatGPT 方面的出色工作。
+- [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompt)，因为他们提供了一系列有趣的 ChatGPT 提示。
+
+
+------
+
+在设计提示时，需要记住这是一个迭代的过程，需要大量的实验来获得最佳结果。使用像OpenAI或Cohere这样的简单平台是一个很好的起点。
