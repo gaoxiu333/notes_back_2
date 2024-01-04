@@ -31,3 +31,30 @@
 
 相当于三位世界中的`z`轴
 
+## 左右居中
+
+- `text-align:center`
+- `margin: 0 auto`
+- `table` 布局
+- `position` 定位 + `transfrom`
+
+## 垂直居中
+
+- `position` 定位 + `transfrom`
+- `vertical-align: middle;`
+
+## 清除浮动
+
+- `clear:both` - 浮动元素末尾的元素添加
+- `overflow:hidden`/`auto` - 利用BFC
+
+## 经典布局
+
+- 圣杯
+
+
+## 其他
+
+**transition和animation的区别** - 前者之后两帧
+
+
