@@ -230,4 +230,55 @@
 > 反射在元编程中的应用
 
 
+## 对象描述符
+
+对象属性管理，安全性和内存管理起到重要作用
+
+- Object.defineProperty - 精确的添加或修改对象上的属性；
+	- 数据描述符
+	- 访问器描述符
+	- 以上两种二选一，不能共存
+- 描述符属性
+	- `configurable`
+		- 属性是否可配置，默认`false`
+		- `false`
+			- 无法删除
+			- 不能再次修改`configurable`
+			- 不能修改`enumerable`
+			- 不能修改`writable`
+			- 不能修改`value`
+			- 可以修改`get`和`set`方法
+		- `true`
+			- 还可以再次编辑修改
+- 数据描述符
+	- `enumerable` - 是否可枚举
+		- 默认`false`
+	- `value` - 属性的值
+		- 默认`undefined`
+	- `writable` - 属性值是否可改写
+		- 默认`false`
+- 访问器描述符
+	- `get`
+	- `set`
+- `Object.getOwnPropertyDescriptor()` - 返回自有属性的描述符
+> 注意：使用`Object.defineProperty`定义对象描述符时，也会配置对象原型上的属性，可以考虑使用`Object.create(null)`避免修改原型，或者临时对象字面量也行。
+
+### 属性的可枚举和所有权
+
+`enumerable` 设置为 true的属性
+- `in` - 包含继承所有
+- `for...in` - 包含继承可枚举
+- `Object.keys` - 自有可枚举
+- `getOwnPropertyNames` - 自有所有
+- `getOwnPropertySymbols` - 自有所有
+- `Object.hasOwnProperty()` - 是否时自有属性
+- `Object.propertyIsEnumberable()` - 是否是自有的可枚举属性
+
+## Proxy
+
+创建对象的代理，实现拦截等操作。
+
+## Reflect
+
+与`proxy`类似，但`Reflect`的所有属性都只是静态方法
 
