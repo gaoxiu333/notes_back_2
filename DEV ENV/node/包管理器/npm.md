@@ -138,7 +138,9 @@ TODO
 ---
 ## npm 仓库
 
-[verdaccio](https://github.com/verdaccio/verdaccio) 基于 nodejs 的轻量级私有仓库
+- [verdaccio](https://github.com/verdaccio/verdaccio) 基于 nodejs 的轻量级私有仓库
+- Nexus - 基于JAVA
+
 
 
 ## registry
