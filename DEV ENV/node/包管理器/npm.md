@@ -133,3 +133,20 @@ TODO
 - 设置源
 - 设置代理
 - package.json 文件说明
+
+
+---
+## npm 仓库
+
+[verdaccio](https://github.com/verdaccio/verdaccio) 基于 nodejs 的轻量级私有仓库
+
+
+## registry
+
+- 官方 - https://registry.npmjs.org/
+- 淘宝 - https://registry.npm.taobao.org/
+
+```bash
+npm i package --registry=URL # 单个包
+npm config set registry URL # 设置
+```
