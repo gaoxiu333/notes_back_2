@@ -275,9 +275,10 @@
 `enumerable` 设置为 true的属性
 - `in` - 包含继承所有
 - `for...in` - 包含继承可枚举
-- `Object.keys` - 自有可枚举
-- `getOwnPropertyNames` - 自有所有
-- `getOwnPropertySymbols` - 自有所有
+- 返回属性
+	- `Object.keys` - 自有可枚举
+	- `getOwnPropertyNames` - 自有所有
+	- `getOwnPropertySymbols` - 自有所有
 - `Object.hasOwnProperty()` - 是否时自有属性
 - `Object.propertyIsEnumberable()` - 是否是自有的可枚举属性
 

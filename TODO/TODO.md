@@ -36,7 +36,7 @@ https://www.kancloud.cn/thinkphp/linux-command-line/39436
 - 要不要考虑活跃状态？
 
 
-## 新闻咨询
+## 新闻资讯
 
 搭建自己的 ssr？
 或者构建
