@@ -7,8 +7,14 @@
 ## 深入
 
 - [JavaScript开发者应懂的33个概念](https://github.com/stephentian/33-js-concepts?tab=readme-ov-file)
+- [你不知道的JS](https://github.com/getify/You-Dont-Know-JS)
+- [ES 6](https://wangdoc.com/es6/intro)
+书
+- [犀牛书](https://book.douban.com/subject/35396470/)
+- [你不知道的JavaScript（上卷）](https://book.douban.com/subject/26351021/) - 主要是上中两卷
+- [《JavaScript 二十年》中文版](https://github.com/doodlewind/jshistory-cn)
 
-
+----
 TODO 
 
 33 个概念在基础里面基本涵盖，剩下的就是熟练掌握。
