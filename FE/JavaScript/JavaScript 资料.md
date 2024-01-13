@@ -10,7 +10,7 @@
 - [你不知道的JS](https://github.com/getify/You-Dont-Know-JS)
 - [ES 6](https://wangdoc.com/es6/intro)
 书
-- [犀牛书](https://book.douban.com/subject/35396470/)
+- [JavaScript权威指南（原书第7版）](https://book.douban.com/subject/35396470/)
 - [你不知道的JavaScript（上卷）](https://book.douban.com/subject/26351021/) - 主要是上中两卷
 - [《JavaScript 二十年》中文版](https://github.com/doodlewind/jshistory-cn)
 
