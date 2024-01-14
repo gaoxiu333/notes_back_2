@@ -128,11 +128,6 @@ JavaScript 中的变量是没有类型的，只有值才有。变量可以随时
 	- `xx is not defined` - 未定义的变量也会返回`undefined`
 		- 可以作为安全防范机制(防止报错)，另一个是`window.[name]`
 
-## 作用域
-
-### 编译原理
-
-
 ### 变量和作用域
 
 - 变量声明 
@@ -364,3 +359,61 @@ JavaScript 中的变量是没有类型的，只有值才有。变量可以随时
 
 ---
 ## class 和 原型继承
+
+原型链是JavaScript的主要继承方式，基本思想就是通过原型继承多个引用类型的属性和方法。
+
+优点
+- 共享方法和属性
+缺点
+- 原型一旦改变，会影响所有实例，因为是引用类型嘛
+
+```js
+
+// 继承
+function Parent() {}
+function Sub() {}
+Sub.prototype = new Parent();
+// 组合继承
+function Parent(name) {
+  this.name = name;
+}
+Parent.prototype.getName = function () {
+  return this.name;
+};
+function Sub(name) {
+  Parent.call(this, name); // 借用构造函数继承属性【属性】
+}
+Sub.prototype = new Parent(); // 原型链继承方法 【方法】
+
+// 寄生式继承 - 克隆一个对象，然后增强，返回这个对象
+// 原始对象
+function OriginalObject() {
+    this.value = 42;
+    this.method = function() {
+        console.log('Hello!');
+    };
+}
+
+// 寄生式继承函数
+function createEnhancedObject(original) {
+    var clone = Object.create(original); // 创建一个原始对象的副本
+    clone.newMethod = function() {       // 向副本添加新的方法
+        console.log('New method');
+    };
+    return clone;                        // 返回这个已经被修改的新对象
+}
+
+// 寄生式组合继承
+function Parent(name) {
+  this.name = name;
+}
+Parent.prototype.getName = function () {
+  return this.name;
+}
+function Sub(name) {
+  Parent.call(this, name); // 借用构造函数继承属性 【属性】
+}
+Sub.prototype = Object.create(Parent.prototype); // 原型链继承方法 【方法】
+// 或者 Sub.prototype = new Parent();
+Sub.prototype.constructor = Sub; // 修复构造函数指向
+```
