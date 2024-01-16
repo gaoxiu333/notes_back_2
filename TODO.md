@@ -31,7 +31,7 @@
 （还有其他社交平台上的收集 🤔）
 
 ## 字典
-debounce - 防抖
-throttle - 防抖
-deepClone -
-shallow - 浅克隆
+- debounce - 防抖
+- throttle - 节流
+- deepClone -
+- shallow - 浅克隆
