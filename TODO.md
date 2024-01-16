@@ -35,3 +35,4 @@
 - throttle - 节流
 - deepClone -
 - shallow - 浅克隆
+- currying - 柯里化
