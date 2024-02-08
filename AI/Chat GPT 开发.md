@@ -15,6 +15,7 @@
 
 使用开源平台二次开发
 - [ChatGPT Next Web](https://github.com/gaoxiu333/ChatGPT-Next-Web)
+- [开发指南](https://mi2zo429cdh.feishu.cn/docx/IGd1d8UQuo9DAkxfHqAcnx5OnFd)
 
 
 

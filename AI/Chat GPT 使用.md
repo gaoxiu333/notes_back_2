@@ -1,4 +1,9 @@
 
+[中文AI信息](https://www.chinaz.com/ai/)
+
+[AI 工具](https://zhuanlan.zhihu.com/p/616655394)
+
+[GPT3](https://gpt3demo.com/)
 ## 前言
 
 ChatGPT 讨论热浪中有许多种不同的声音，你觉得 ChatGPT 毫无新意难堪大用，可能会错失竞争优势；你觉得 ChatGPT 无所不能，也会癫狂而后深深失望。
