@@ -4,7 +4,8 @@
 - awesome
 - learn XXX in the hard way 
 - learn by doing
-- boilerplate - 入门套件
+- boilerplate - 入门套件/样板
+- starter - 启动机
 
 ## Github 个人预览页面
 

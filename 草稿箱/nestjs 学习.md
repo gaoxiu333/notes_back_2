@@ -26,3 +26,10 @@ TODO: `npx <package>` 在没有下载的情况下能直接用么？
 
 执着于当前最流行最易用的框架 nest 学习暂时停止，至少在我使用过angular后，它确实挺容易学的
 [参考 nextjs+nestjs+react 是不是比较流行的选择？](https://www.v2ex.com/t/938833)
+
+
+---
+二级页面导航
+如果是客户端渲染，就很简单，直接useState记录状态，onClick切换，但是用服务端组件呢？
+路由的概念好复杂啊，要不要写一个example巩固一下！
+
